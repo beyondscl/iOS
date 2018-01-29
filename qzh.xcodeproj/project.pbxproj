@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3331E11D201ACC1000C96278 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3331E11C201ACC1000C96278 /* Security.framework */; };
+		3331E124201ACC9D00C96278 /* SAMKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 3331E120201ACC9D00C96278 /* SAMKeychainQuery.m */; };
+		3331E125201ACC9D00C96278 /* SAMKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 3331E121201ACC9D00C96278 /* SAMKeychain.m */; };
 		3349B89420119113000EC218 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3349B89320119113000EC218 /* AppDelegate.m */; };
 		3349B89720119113000EC218 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3349B89620119113000EC218 /* ViewController.m */; };
 		3349B89A20119113000EC218 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3349B89820119113000EC218 /* Main.storyboard */; };
@@ -20,16 +23,24 @@
 		3349B94C2011E317000EC218 /* ViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 3349B89520119113000EC218 /* ViewController.h */; };
 		3349B9512011E317000EC218 /* Assets.xcassets in Sources */ = {isa = PBXBuildFile; fileRef = 3349B89E20119113000EC218 /* Assets.xcassets */; };
 		33556E0C2019A209005C67DB /* WKDelegateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33556E0B2019A209005C67DB /* WKDelegateController.m */; };
+		335599DF201ECAFB00ED5878 /* jpush-ios-3.0.8.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 335599DA201ECAFA00ED5878 /* jpush-ios-3.0.8.a */; };
+		335599E0201ECAFB00ED5878 /* jcore-ios-1.1.7.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 335599DB201ECAFA00ED5878 /* jcore-ios-1.1.7.a */; };
+		335599E1201ECAFB00ED5878 /* jpush-extension-ios-1.1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 335599DE201ECAFB00ED5878 /* jpush-extension-ios-1.1.0.a */; };
+		335599E3201ECB6300ED5878 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 335599E2201ECB6300ED5878 /* CFNetwork.framework */; };
+		335599E5201ECB6A00ED5878 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 335599E4201ECB6A00ED5878 /* CoreFoundation.framework */; };
+		335599E7201ECB7F00ED5878 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 335599E6201ECB7F00ED5878 /* CoreGraphics.framework */; };
+		335599E9201ECB8E00ED5878 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 335599E8201ECB8D00ED5878 /* Foundation.framework */; };
+		335599EB201ECB9300ED5878 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 335599EA201ECB9300ED5878 /* UIKit.framework */; };
+		335599ED201ECBA200ED5878 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 335599EC201ECBA200ED5878 /* libz.tbd */; };
+		335599EF201ECBB200ED5878 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 335599EE201ECBB200ED5878 /* UserNotifications.framework */; };
+		335599F1201ECBBF00ED5878 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 335599F0201ECBBF00ED5878 /* libresolv.tbd */; };
 		335AA0F520182D12007F33CC /* bin in Resources */ = {isa = PBXBuildFile; fileRef = 335AA0F420182D12007F33CC /* bin */; };
-		336BAB642011EBC100EC1EA8 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 336BAB602011EBC100EC1EA8 /* libWeChatSDK.a */; };
-		336BAB652011ED9900EC1EA8 /* WechatAuthSDK.h in Frameworks */ = {isa = PBXBuildFile; fileRef = 336BAB622011EBC100EC1EA8 /* WechatAuthSDK.h */; };
-		336BAB662011ED9900EC1EA8 /* WXApi.h in Frameworks */ = {isa = PBXBuildFile; fileRef = 336BAB632011EBC100EC1EA8 /* WXApi.h */; };
-		336BAB672011ED9900EC1EA8 /* WXApiObject.h in Frameworks */ = {isa = PBXBuildFile; fileRef = 336BAB612011EBC100EC1EA8 /* WXApiObject.h */; };
 		336BAB692011EE2B00EC1EA8 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 336BAB682011EE2000EC1EA8 /* libsqlite3.tbd */; };
 		336BAB6B2011EE4B00EC1EA8 /* libz.1.2.11.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 336BAB6A2011EE4B00EC1EA8 /* libz.1.2.11.tbd */; };
 		336BAB6D2011EE6100EC1EA8 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 336BAB6C2011EE6100EC1EA8 /* libc++.tbd */; };
 		336BAB6F2011EEEC00EC1EA8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 336BAB6E2011EEE800EC1EA8 /* SystemConfiguration.framework */; };
 		336BAB712011EF2800EC1EA8 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 336BAB702011EF2000EC1EA8 /* CoreTelephony.framework */; };
+		337BA0C2201CA0D9007E3944 /* bg2.png in Resources */ = {isa = PBXBuildFile; fileRef = 337BA0C1201CA0D9007E3944 /* bg2.png */; };
 		33F3B22620196BA800BE8FF8 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3366956A2016D68B00ECB2B4 /* StoreKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +62,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3331E11C201ACC1000C96278 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		3331E120201ACC9D00C96278 /* SAMKeychainQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAMKeychainQuery.m; sourceTree = "<group>"; };
+		3331E121201ACC9D00C96278 /* SAMKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAMKeychain.m; sourceTree = "<group>"; };
+		3331E122201ACC9D00C96278 /* SAMKeychainQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAMKeychainQuery.h; sourceTree = "<group>"; };
+		3331E123201ACC9D00C96278 /* SAMKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAMKeychain.h; sourceTree = "<group>"; };
 		3349B88F20119113000EC218 /* qzh.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = qzh.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3349B89220119113000EC218 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3349B89320119113000EC218 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -74,18 +90,28 @@
 		3349B9662011E72A000EC218 /* WXApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WXApi.h; path = ../lib/WechatSDK1.8.2/WXApi.h; sourceTree = "<group>"; };
 		33556E0B2019A209005C67DB /* WKDelegateController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKDelegateController.m; sourceTree = "<group>"; };
 		33556E0E2019A2B0005C67DB /* WKDelegateController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKDelegateController.h; sourceTree = "<group>"; };
+		335599DA201ECAFA00ED5878 /* jpush-ios-3.0.8.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jpush-ios-3.0.8.a"; sourceTree = "<group>"; };
+		335599DB201ECAFA00ED5878 /* jcore-ios-1.1.7.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jcore-ios-1.1.7.a"; sourceTree = "<group>"; };
+		335599DC201ECAFB00ED5878 /* JPUSHService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPUSHService.h; sourceTree = "<group>"; };
+		335599DD201ECAFB00ED5878 /* JPushNotificationExtensionService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPushNotificationExtensionService.h; sourceTree = "<group>"; };
+		335599DE201ECAFB00ED5878 /* jpush-extension-ios-1.1.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jpush-extension-ios-1.1.0.a"; sourceTree = "<group>"; };
+		335599E2201ECB6300ED5878 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		335599E4201ECB6A00ED5878 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		335599E6201ECB7F00ED5878 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		335599E8201ECB8D00ED5878 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		335599EA201ECB9300ED5878 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		335599EC201ECBA200ED5878 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		335599EE201ECBB200ED5878 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		335599F0201ECBBF00ED5878 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
+		335599F2201ECC3300ED5878 /* qzh.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = qzh.entitlements; sourceTree = "<group>"; };
 		335AA0F420182D12007F33CC /* bin */ = {isa = PBXFileReference; lastKnownFileType = folder; path = bin; sourceTree = "<group>"; };
 		3366956A2016D68B00ECB2B4 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		336BAB5E2011EBA000EC1EA8 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libWeChatSDK.a; path = ../../lib/WechatSDK1.8.2/libWeChatSDK.a; sourceTree = "<group>"; };
-		336BAB602011EBC100EC1EA8 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libWeChatSDK.a; path = ../../lib/WechatSDK1.8.2/libWeChatSDK.a; sourceTree = "<group>"; };
-		336BAB612011EBC100EC1EA8 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WXApiObject.h; path = ../../lib/WechatSDK1.8.2/WXApiObject.h; sourceTree = "<group>"; };
-		336BAB622011EBC100EC1EA8 /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WechatAuthSDK.h; path = ../../lib/WechatSDK1.8.2/WechatAuthSDK.h; sourceTree = "<group>"; };
-		336BAB632011EBC100EC1EA8 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WXApi.h; path = ../../lib/WechatSDK1.8.2/WXApi.h; sourceTree = "<group>"; };
 		336BAB682011EE2000EC1EA8 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		336BAB6A2011EE4B00EC1EA8 /* libz.1.2.11.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.11.tbd; path = usr/lib/libz.1.2.11.tbd; sourceTree = SDKROOT; };
 		336BAB6C2011EE6100EC1EA8 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		336BAB6E2011EEE800EC1EA8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		336BAB702011EF2000EC1EA8 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		337BA0C1201CA0D9007E3944 /* bg2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg2.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,16 +119,24 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				335599F1201ECBBF00ED5878 /* libresolv.tbd in Frameworks */,
+				335599EF201ECBB200ED5878 /* UserNotifications.framework in Frameworks */,
+				335599ED201ECBA200ED5878 /* libz.tbd in Frameworks */,
+				3331E11D201ACC1000C96278 /* Security.framework in Frameworks */,
+				335599EB201ECB9300ED5878 /* UIKit.framework in Frameworks */,
+				335599E9201ECB8E00ED5878 /* Foundation.framework in Frameworks */,
+				335599E7201ECB7F00ED5878 /* CoreGraphics.framework in Frameworks */,
+				336BAB6F2011EEEC00EC1EA8 /* SystemConfiguration.framework in Frameworks */,
+				336BAB712011EF2800EC1EA8 /* CoreTelephony.framework in Frameworks */,
+				335599E5201ECB6A00ED5878 /* CoreFoundation.framework in Frameworks */,
+				335599E3201ECB6300ED5878 /* CFNetwork.framework in Frameworks */,
 				336BAB6D2011EE6100EC1EA8 /* libc++.tbd in Frameworks */,
 				336BAB6B2011EE4B00EC1EA8 /* libz.1.2.11.tbd in Frameworks */,
 				336BAB692011EE2B00EC1EA8 /* libsqlite3.tbd in Frameworks */,
-				336BAB642011EBC100EC1EA8 /* libWeChatSDK.a in Frameworks */,
-				336BAB652011ED9900EC1EA8 /* WechatAuthSDK.h in Frameworks */,
-				336BAB662011ED9900EC1EA8 /* WXApi.h in Frameworks */,
-				336BAB672011ED9900EC1EA8 /* WXApiObject.h in Frameworks */,
-				336BAB712011EF2800EC1EA8 /* CoreTelephony.framework in Frameworks */,
+				335599E0201ECAFB00ED5878 /* jcore-ios-1.1.7.a in Frameworks */,
+				335599E1201ECAFB00ED5878 /* jpush-extension-ios-1.1.0.a in Frameworks */,
 				33F3B22620196BA800BE8FF8 /* StoreKit.framework in Frameworks */,
-				336BAB6F2011EEEC00EC1EA8 /* SystemConfiguration.framework in Frameworks */,
+				335599DF201ECAFB00ED5878 /* jpush-ios-3.0.8.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,13 +182,15 @@
 		3349B89120119113000EC218 /* qzh */ = {
 			isa = PBXGroup;
 			children = (
+				335599F2201ECC3300ED5878 /* qzh.entitlements */,
+				335599D9201ECA9C00ED5878 /* jpushsdk */,
+				337BA0C1201CA0D9007E3944 /* bg2.png */,
 				3349B89220119113000EC218 /* AppDelegate.h */,
 				3349B89320119113000EC218 /* AppDelegate.m */,
-				336BAB5E2011EBA000EC1EA8 /* libWeChatSDK.a */,
-				336BAB602011EBC100EC1EA8 /* libWeChatSDK.a */,
-				336BAB622011EBC100EC1EA8 /* WechatAuthSDK.h */,
-				336BAB632011EBC100EC1EA8 /* WXApi.h */,
-				336BAB612011EBC100EC1EA8 /* WXApiObject.h */,
+				3331E123201ACC9D00C96278 /* SAMKeychain.h */,
+				3331E121201ACC9D00C96278 /* SAMKeychain.m */,
+				3331E122201ACC9D00C96278 /* SAMKeychainQuery.h */,
+				3331E120201ACC9D00C96278 /* SAMKeychainQuery.m */,
 				3349B89520119113000EC218 /* ViewController.h */,
 				3349B89620119113000EC218 /* ViewController.m */,
 				3349B89820119113000EC218 /* Main.storyboard */,
@@ -190,6 +226,15 @@
 		3349B8CA2011D22F000EC218 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				335599F0201ECBBF00ED5878 /* libresolv.tbd */,
+				335599EE201ECBB200ED5878 /* UserNotifications.framework */,
+				335599EC201ECBA200ED5878 /* libz.tbd */,
+				335599EA201ECB9300ED5878 /* UIKit.framework */,
+				335599E8201ECB8D00ED5878 /* Foundation.framework */,
+				335599E6201ECB7F00ED5878 /* CoreGraphics.framework */,
+				335599E4201ECB6A00ED5878 /* CoreFoundation.framework */,
+				335599E2201ECB6300ED5878 /* CFNetwork.framework */,
+				3331E11C201ACC1000C96278 /* Security.framework */,
 				3366956A2016D68B00ECB2B4 /* StoreKit.framework */,
 				336BAB702011EF2000EC1EA8 /* CoreTelephony.framework */,
 				336BAB6E2011EEE800EC1EA8 /* SystemConfiguration.framework */,
@@ -202,6 +247,18 @@
 				3349B9642011E72A000EC218 /* WXApiObject.h */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		335599D9201ECA9C00ED5878 /* jpushsdk */ = {
+			isa = PBXGroup;
+			children = (
+				335599DB201ECAFA00ED5878 /* jcore-ios-1.1.7.a */,
+				335599DE201ECAFB00ED5878 /* jpush-extension-ios-1.1.0.a */,
+				335599DA201ECAFA00ED5878 /* jpush-ios-3.0.8.a */,
+				335599DD201ECAFB00ED5878 /* JPushNotificationExtensionService.h */,
+				335599DC201ECAFB00ED5878 /* JPUSHService.h */,
+			);
+			path = jpushsdk;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,6 +329,11 @@
 					3349B88E20119113000EC218 = {
 						CreatedOnToolsVersion = 9.1;
 						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					3349B8A920119113000EC218 = {
 						CreatedOnToolsVersion = 9.1;
@@ -312,6 +374,7 @@
 			files = (
 				335AA0F520182D12007F33CC /* bin in Resources */,
 				3349B8A220119113000EC218 /* LaunchScreen.storyboard in Resources */,
+				337BA0C2201CA0D9007E3944 /* bg2.png in Resources */,
 				3349B89A20119113000EC218 /* Main.storyboard in Resources */,
 				3349B89F20119113000EC218 /* Assets.xcassets in Resources */,
 			);
@@ -343,7 +406,9 @@
 				33556E0C2019A209005C67DB /* WKDelegateController.m in Sources */,
 				3349B9512011E317000EC218 /* Assets.xcassets in Sources */,
 				3349B89720119113000EC218 /* ViewController.m in Sources */,
+				3331E124201ACC9D00C96278 /* SAMKeychainQuery.m in Sources */,
 				3349B89420119113000EC218 /* AppDelegate.m in Sources */,
+				3331E125201ACC9D00C96278 /* SAMKeychain.m in Sources */,
 				3349B8A520119113000EC218 /* main.m in Sources */,
 				3349B89D20119113000EC218 /* qzh.xcdatamodeld in Sources */,
 			);
@@ -511,6 +576,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = qzh/qzh.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
@@ -519,6 +585,10 @@
 				INFOPLIST_FILE = qzh/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/qzh/jpushsdk",
+				);
 				"LIBRARY_SEARCH_PATHS[arch=*]" = "/Users/xianming/Desktop/ipa/lib/WechatSDK1.8.2\n";
 				PRODUCT_BUNDLE_IDENTIFIER = gamecenter.kakadianwan.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -533,6 +603,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = qzh/qzh.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
@@ -541,6 +612,10 @@
 				INFOPLIST_FILE = qzh/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/qzh/jpushsdk",
+				);
 				"LIBRARY_SEARCH_PATHS[arch=*]" = "/Users/xianming/Desktop/ipa/lib/WechatSDK1.8.2\n";
 				PRODUCT_BUNDLE_IDENTIFIER = gamecenter.kakadianwan.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
