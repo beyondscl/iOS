@@ -20,6 +20,6 @@
 //微信分享 scene 0 好友，1 朋友圈,2收藏
 + (void)wechatShareLinkWithScene:(int)scene imgurl:(NSString *)imgurl linkurl:(NSString *)linkurl  title:(NSString *)title andDescription:(NSString *)description;
 //QQ分享
-+ (void)qqShowMediaNewsWithScene:(int)scene imgurl:(NSString *)imgurl linkurl:(NSString *)linkurl  title:(NSString *)title andDescription:(NSString *)description;
+//+ (void)qqShowMediaNewsWithScene:(int)scene imgurl:(NSString *)imgurl linkurl:(NSString *)linkurl  title:(NSString *)title andDescription:(NSString *)description;
 +(void)jgshare:(int)sence title:(NSString *)title  image:(UIImage *)image linkurl:(NSString *)linkurl;
 @end

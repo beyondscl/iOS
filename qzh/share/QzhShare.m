@@ -8,8 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "QzhShare.h"
-#import "WXApi.h"
-#import "WXApiObject.h"
 
 #import "JSHAREService.h"
 
