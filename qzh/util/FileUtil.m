@@ -20,40 +20,40 @@
 @implementation FileUtil
 
 //获取Document路径
-+ (NSString *)getDocumentPath
++ (NSString *)hbo_getDocumentPath
 {
     NSArray *filePaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     return [filePaths objectAtIndex:0];
 }
 
 //获取Library路径
-+ (NSString *)getLibraryPath
++ (NSString *)hbo_getLibraryPath
 {
     NSArray *filePaths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
     return [filePaths objectAtIndex:0];
 }
 
 //获取应用程序路径
-+ (NSString *)getApplicationPath
++ (NSString *)hbo_getApplicationPath
 {
     return NSHomeDirectory();
 }
 
 //获取Cache路径
-+ (NSString *)getCachePath
++ (NSString *)hbo_getCachePath
 {
     NSArray *filePaths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
     return [filePaths objectAtIndex:0];
 }
 
 //获取Temp路径
-+ (NSString *)getTempPath
++ (NSString *)hbo_getTempPath
 {
     return NSTemporaryDirectory();
 }
 
 //判断文件是否存在于某个路径中
-+ (BOOL)fileIsExistOfPath:(NSString *)filePath
++ (BOOL)hbo_fileIsExistOfPath:(NSString *)filePath
 {
     BOOL flag = NO;
     NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -66,7 +66,7 @@
 }
 
 //从某个路径中移除文件
-+ (BOOL)removeFileOfPath:(NSString *)filePath
++ (BOOL)hbo_removeFileOfPath:(NSString *)filePath
 {
     BOOL flag = YES;
     NSFileManager *fileManage = [NSFileManager defaultManager];
@@ -79,7 +79,7 @@
 }
 
 //从URL路径中移除文件
-- (BOOL)removeFileOfURL:(NSURL *)fileURL
+- (BOOL)hbo_removeFileOfURL:(NSURL *)fileURL
 {
     BOOL flag = YES;
     NSFileManager *fileManage = [NSFileManager defaultManager];
@@ -92,7 +92,7 @@
 }
 
 //创建文件路径
-+(BOOL)creatDirectoryWithPath:(NSString *)dirPath
++(BOOL)hbo_creatDirectoryWithPath:(NSString *)dirPath
 {
     BOOL ret = YES;
     BOOL isExist = [[NSFileManager defaultManager] fileExistsAtPath:dirPath];
@@ -108,7 +108,7 @@
 }
 
 //创建文件
-+ (BOOL)creatFileWithPath:(NSString *)filePath
++ (BOOL)hbo_creatFileWithPath:(NSString *)filePath
 {
     BOOL isSuccess = YES;
     NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -131,10 +131,10 @@
 }
 
 //保存文件
-+ (BOOL)saveFile:(NSString *)filePath withData:(NSData *)data
++ (BOOL)hbo_saveFile:(NSString *)filePath withData:(NSData *)data
 {
     BOOL ret = YES;
-    ret = [self creatFileWithPath:filePath];
+    ret = [self hbo_creatFileWithPath:filePath];
     if (ret) {
         ret = [data writeToFile:filePath atomically:YES];
         if (!ret) {
@@ -147,9 +147,9 @@
 }
 
 //追加写文件
-+ (BOOL)appendData:(NSData *)data withPath:(NSString *)path
++ (BOOL)hbo_appendData:(NSData *)data withPath:(NSString *)path
 {
-    BOOL result = [self creatFileWithPath:path];
+    BOOL result = [self hbo_creatFileWithPath:path];
     if (result) {
         NSFileHandle *handle = [NSFileHandle fileHandleForWritingAtPath:path];
         [handle seekToEndOfFile];
@@ -164,7 +164,7 @@
 }
 
 //获取文件
-+ (NSData *)getFileData:(NSString *)filePath
++ (NSData *)hbo_getFileData:(NSString *)filePath
 {
     NSFileHandle *handle = [NSFileHandle fileHandleForReadingAtPath:filePath];
     NSData *fileData = [handle readDataToEndOfFile];
@@ -173,7 +173,7 @@
 }
 
 //读取文件
-+ (NSData *)getFileData:(NSString *)filePath startIndex:(long long)startIndex length:(NSInteger)length
++ (NSData *)hbo_getFileData:(NSString *)filePath startIndex:(long long)startIndex length:(NSInteger)length
 {
     NSFileHandle *handle = [NSFileHandle fileHandleForReadingAtPath:filePath];
     [handle seekToFileOffset:startIndex];
@@ -183,7 +183,7 @@
 }
 
 //移动文件
-+ (BOOL)moveFileFromPath:(NSString *)fromPath toPath:(NSString *)toPath
++ (BOOL)hbo_moveFileFromPath:(NSString *)fromPath toPath:(NSString *)toPath
 {
     NSFileManager *fileManager = [NSFileManager defaultManager];
     if (![fileManager fileExistsAtPath:fromPath]) {
@@ -195,7 +195,7 @@
         return NO;
     }
     NSString *headerComponent = [toPath stringByDeletingLastPathComponent];
-    if ([self creatFileWithPath:headerComponent]) {
+    if ([self hbo_creatFileWithPath:headerComponent]) {
         return [fileManager moveItemAtPath:fromPath toPath:toPath error:nil];
     } else {
         return NO;
@@ -203,7 +203,7 @@
 }
 
 //拷贝文件
-+(BOOL)copyFileFromPath:(NSString *)fromPath toPath:(NSString *)toPath
++(BOOL)hbo_copyFileFromPath:(NSString *)fromPath toPath:(NSString *)toPath
 {
     NSFileManager *fileManager = [NSFileManager defaultManager];
     if (![fileManager fileExistsAtPath:fromPath]) {
@@ -215,7 +215,7 @@
         return NO;
     }
     NSString *headerComponent = [toPath stringByDeletingLastPathComponent];
-    if ([self creatFileWithPath:headerComponent]) {
+    if ([self hbo_creatFileWithPath:headerComponent]) {
         return [fileManager copyItemAtPath:fromPath toPath:toPath error:nil];
     } else {
         return NO;
@@ -223,7 +223,7 @@
 }
 
 //获取文件夹下文件列表,dir | file
-+ (NSArray *)getFileListInFolderWithPath:(NSString *)path
++ (NSArray *)hbo_getFileListInFolderWithPath:(NSString *)path
 {
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSError *error;
@@ -235,7 +235,7 @@
 }
 
 //获取文件大小
-+ (long long)getFileSizeWithPath:(NSString *)path
++ (long long)hbo_getFileSizeWithPath:(NSString *)path
 {
     unsigned long long fileLength = 0;
     NSNumber *fileSize;
@@ -254,7 +254,7 @@
 }
 
 //获取文件创建时间
-+ (NSString *)getFileCreatDateWithPath:(NSString *)path
++ (NSString *)hbo_getFileCreatDateWithPath:(NSString *)path
 {
     NSString *date = nil;
     NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -264,7 +264,7 @@
 }
 
 //获取文件所有者
-+ (NSString *)getFileOwnerWithPath:(NSString *)path
++ (NSString *)hbo_getFileOwnerWithPath:(NSString *)path
 {
     NSString *fileOwner = nil;
     NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -274,7 +274,7 @@
 }
 
 //获取文件更改日期
-+ (NSString *)getFileChangeDateWithPath:(NSString *)path
++ (NSString *)hbo_getFileChangeDateWithPath:(NSString *)path
 {
     NSString *date = nil;
     NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -283,9 +283,9 @@
     return date;
 }
 //下载并拷贝文件location toFullPath:/xc/xx/xx.?
-+ (NSError*)moveFileFromDown:(NSURL *)location toFullPath:(NSString*)toFullPath{
-    if ([self fileIsExistOfPath:toFullPath]) {
-        [self removeFileOfPath:toFullPath];
++ (NSError*)hbo_moveFileFromDown:(NSURL *)location toFullPath:(NSString*)toFullPath{
+    if ([self hbo_fileIsExistOfPath:toFullPath]) {
+        [self hbo_removeFileOfPath:toFullPath];
     }
     NSError *error;
     [[NSFileManager defaultManager]moveItemAtURL:location toURL:[NSURL fileURLWithPath:toFullPath] error:&error];
@@ -295,13 +295,13 @@
     return error;
 }
 //下载文件的根目录
-+(NSString*)getRootPath{
++(NSString*)hbo_getRootPath{
     //    [[NSBundle mainBundle] resourcePath]
     NSString *documentPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     NSString *appbundleIdf = [[NSBundle mainBundle]bundleIdentifier];
     NSString *root =  [NSString stringWithFormat:@"%@/%@/%@/",documentPath,appbundleIdf,@"downloads"];
     root=[root stringByReplacingOccurrencesOfString:@"."withString:@"/"];
-    if ([FileUtil creatDirectoryWithPath:root]) {
+    if ([FileUtil hbo_creatDirectoryWithPath:root]) {
         NSLog(@"创建文件夹成功%@",root);
         return root;
     }
@@ -310,8 +310,8 @@
 }
 
 //解压zip文件
-+(void)unZip:(NSString*)zipPath unzipPath:(NSString*)unzipPath{
-    if(![self fileIsExistOfPath:zipPath]){
++(void)hbo_unZip:(NSString*)zipPath unzipPath:(NSString*)unzipPath{
+    if(![self hbo_fileIsExistOfPath:zipPath]){
         NSLog(@"解压源文件不存在:%@",@"");
         return;
     }
@@ -327,7 +327,7 @@
 
 
 //获取文件的md5值
-+(NSString*)getFileMD5WithPath:(NSString*)path
++(NSString*)hbo_getFileMD5WithPath:(NSString*)path
 
 {
     

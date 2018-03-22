@@ -29,16 +29,16 @@
 @implementation DeviceInfo
 
 //获取电量必须enabled=yes
--(CGFloat)getBatteryQuantity{
+-(CGFloat)hbo_getBatteryQuantity{
     [UIDevice currentDevice].batteryMonitoringEnabled = YES;
     return [[UIDevice currentDevice] batteryLevel];
 }
--(UIDeviceBatteryState)getBatteryStauts
+-(UIDeviceBatteryState)hbo_getBatteryStauts
 {
     [UIDevice currentDevice].batteryMonitoringEnabled = YES;
     return [UIDevice currentDevice].batteryState;
 }
--(NSString *)getWifiName
+-(NSString *)hbo_getWifiName
 {
     NSString *wifiName = nil;
     
@@ -63,7 +63,7 @@
     CFRelease(wifiInterfaces);
     return wifiName;
 }
--(int)getSignalStrength{
+-(int)hbo_getSignalStrength{
     @try {
         UIApplication *app = [UIApplication sharedApplication];
         NSArray *subviews = [[[app valueForKey:@"statusBar"] valueForKey:@"foregroundView"] subviews];
@@ -85,7 +85,7 @@
     @finally {}
 }
 
-- (nullable NSString*)getCurrentLocalIP
+- (nullable NSString*)hbo_getCurrentLocalIP
 {
     NSString *address = nil;
     struct ifaddrs *interfaces = NULL;
@@ -112,7 +112,7 @@
     return address;
 }
 
-- (nullable NSString *)getCurreWiFiSsid {
+- (nullable NSString *)hbo_getCurreWiFiSsid {
     NSArray *ifs = (__bridge_transfer id)CNCopySupportedInterfaces();
     id info = nil;
     for (NSString *ifnam in ifs) {
@@ -122,7 +122,7 @@
     return [(NSDictionary*)info objectForKey:@"SSID"];
 }
 
-- (NSString*)iphoneType {
+- (NSString*)hbo_iphoneType {
     struct utsname systemInfo;
     uname(&systemInfo);
     
@@ -261,7 +261,7 @@
 }
 //写在这里无法进入位置更新,无法使用
 //开始定位
--(void)startLocation{
+-(void)hbo_startLocation{
     locationManager = [[CLLocationManager alloc] init];
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     locationManager.distanceFilter = 1.0f;
@@ -283,7 +283,7 @@
     [locationManager startUpdatingLocation];
 }
 //这个方法用来获取用户是否开启可定位权限
-- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
+- (void)hbo_locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
     switch (status) {
         casekCLAuthorizationStatusNotDetermined:
             if ([locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) {
@@ -295,7 +295,7 @@
     }
 }
 //定位失败的代理方法
-- (void)locationManager:(CLLocationManager *)manager   didFailWithError:(NSError *)error{
+- (void)hbo_locationManager:(CLLocationManager *)manager   didFailWithError:(NSError *)error{
     NSLog(@"定位失败");
     if (error.code == kCLErrorDenied) {
         
@@ -304,7 +304,7 @@
     }
 }
 //获得的定位
-- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
+- (void)hbo_locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
     CLLocation *newLocation = locations[0];
     CLLocationCoordinate2D oldCoordinate = newLocation.coordinate;
     [manager stopUpdatingLocation];
@@ -331,7 +331,7 @@
     }];
 }
 //=======申请权限
-+(void)askAudio{
++(void)hbo_askAudio{
     AVAudioSession *avSession = [AVAudioSession sharedInstance];
     if ([avSession respondsToSelector:@selector(requestRecordPermission:)]) {
         [avSession requestRecordPermission:^(BOOL available) {
@@ -349,7 +349,7 @@
     }
 }
 //屏幕常亮
-+(void)askScreenLight{
++(void)hbo_askScreenLight{
     [UIApplication sharedApplication].idleTimerDisabled = YES;
 }
 @end

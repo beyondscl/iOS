@@ -35,7 +35,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationController.delegate = self;
-    [self loggin];
+    [self hbo_loggin];
 }
 
 #pragma mark 去掉导航栏
@@ -51,7 +51,7 @@
 
 #pragma mark addView
 //第一次登陆的界面
-- (void)loggin
+- (void)hbo_loggin
 {
     float navHeight = 0.0f;
     _vFrame = CGRectMake(0, navHeight, kScreen_width, kScreen_height);
@@ -75,7 +75,7 @@
     imgDLView.frame = CGRectMake(kScreen_width/4-5, kScreen_height/3*2, kScreen_width/4, imgDLView.frame.size.width/5);
     [_view addSubview:imgDLView];
 
-    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(ykBtn:)];
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hbo_ykBtn:)];
     [imgDLView addGestureRecognizer:tapGesture];
     imgDLView.userInteractionEnabled = YES;
     
@@ -85,7 +85,7 @@
     imgDLView3.frame = CGRectMake(kScreen_width/2+5, kScreen_height/3*2, kScreen_width/4, imgDLView3.frame.size.width/5);
     [_view addSubview:imgDLView3];
     
-    UITapGestureRecognizer *tapGesture2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(zhBtn:)];
+    UITapGestureRecognizer *tapGesture2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hbo_zhBtn:)];
     [imgDLView3 addGestureRecognizer:tapGesture2];
     imgDLView3.userInteractionEnabled = YES;
     
@@ -100,15 +100,15 @@
                                   imgDLView5W, imgDLView5W/3);
     [_view addSubview:imgDLView5];
     
-    UITapGestureRecognizer *tapGesture3 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(registBtn:)];
+    UITapGestureRecognizer *tapGesture3 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hbo_registBtn:)];
     [imgDLView5 addGestureRecognizer:tapGesture3];
     imgDLView5.userInteractionEnabled = YES;
 
 }
 //游客按钮
--(void)ykBtn: (UIButton *)sender{
-    NSLog(@"ykBtn click");
-    NSDictionary *d = [Logon touSignin];
+-(void)hbo_ykBtn: (UIButton *)sender{
+    NSLog(@"hbo_ykBtn click");
+    NSDictionary *d = [Logon hbo_touSignin];
     NSString *code = [d objectForKey:@"code"];
     if(0==code.intValue){
         GameVC *gameVC = [[GameVC alloc]initWithInfo:d];
@@ -117,13 +117,13 @@
     }
 }
 //账号按钮
--(void)zhBtn: (UIButton *)sender{
+-(void)hbo_zhBtn: (UIButton *)sender{
     LoginViewController *loginVc = [LoginViewController new];
     [self.navigationController pushViewController:loginVc animated:NO];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
 }
 //注册按钮
--(void)registBtn: (UIButton *)sender{
+-(void)hbo_registBtn: (UIButton *)sender{
     RegisterVC *registVc = [[RegisterVC alloc]init];
     [self.navigationController pushViewController:registVc animated:NO];
     NSLog(@"regisBtn click");

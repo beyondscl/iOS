@@ -23,39 +23,39 @@ static NSString *dfSignin = @"http://wx.ldgame.com/index.php/Stepone/dfSignin";/
 
 @implementation Logon
     
-+(NSDictionary *)dfSignin:(NSString *)account password:(NSString *)password{
-    NSString *ency = [UtilTool getEncryptString];
-    password = [UtilTool md5:password];
++(NSDictionary *)hbo_dfSignin:(NSString *)account password:(NSString *)password{
+    NSString *ency = [UtilTool hbo_getEncryptString];
+    password = [UtilTool hbo_md5:password];
     NSString *dataString = [NSString stringWithFormat:@"account=%@&password=%@%@",account,password,ency];
-    NSDictionary *d = [UtilTool getPostData:dfSignin bodyString:dataString];
+    NSDictionary *d = [UtilTool hbo_getPostData:dfSignin bodyString:dataString];
     return d;
 }
-+(NSDictionary *)touSignin{
-    NSString *dataString = [UtilTool getEncryptString2];
-    NSDictionary *d = [UtilTool getPostData:touSignin bodyString:dataString];
++(NSDictionary *)hbo_touSignin{
+    NSString *dataString = [UtilTool hbo_getEncryptString2];
+    NSDictionary *d = [UtilTool hbo_getPostData:touSignin bodyString:dataString];
     return d;
 }
-+(NSDictionary*)findkey:(NSString *)account  pass:(NSString*)pass verifyCode:(NSString*)verifyCode{
-    NSString *ency = [UtilTool getEncryptString];
-    pass = [UtilTool md5:pass];
++(NSDictionary*)hbo_findkey:(NSString *)account  pass:(NSString*)pass verifyCode:(NSString*)verifyCode{
+    NSString *ency = [UtilTool hbo_getEncryptString];
+    pass = [UtilTool hbo_md5:pass];
     NSString *dataString = [NSString stringWithFormat:@"account=%@&pass1=%@&pass2=%@&verify_code=%@%@",account,pass,pass,verifyCode,ency];
-    NSDictionary *d = [UtilTool getPostData:findkey bodyString:dataString];
+    NSDictionary *d = [UtilTool hbo_getPostData:findkey bodyString:dataString];
     return  d;
 }
     //注册发送验证吗|找回密码发送验证
-+(NSDictionary*)sendvVrifyMsg:(NSString *)account type:(NSString*)type{
++(NSDictionary*)hbo_sendvVrifyMsg:(NSString *)account type:(NSString*)type{
     //    NSString *type = @"phoneRegist";//emailRegist
-    NSString *ency = [UtilTool getEncryptString];
+    NSString *ency = [UtilTool hbo_getEncryptString];
     
     NSString *dataString = [NSString stringWithFormat:@"account=%@&type=%@%@",account,type,ency];
-    NSDictionary *d = [UtilTool getPostData:sendMsg bodyString:dataString];
+    NSDictionary *d = [UtilTool hbo_getPostData:sendMsg bodyString:dataString];
     return  d;
 }
-+(NSDictionary*)dfSignup:(NSString *)account  pass:(NSString*)pass verifyCode:(NSString*)verifyCode nickname:(NSString*)nickname{
-    NSString *ency = [UtilTool getEncryptString];
-    pass = [UtilTool md5:pass];
++(NSDictionary*)hbo_dfSignup:(NSString *)account  pass:(NSString*)pass verifyCode:(NSString*)verifyCode nickname:(NSString*)nickname{
+    NSString *ency = [UtilTool hbo_getEncryptString];
+    pass = [UtilTool hbo_md5:pass];
     NSString *dataString = [NSString stringWithFormat:@"account=%@&pass1=%@&pass2=%@&verify_code=%@&nickname=%@%@",account,pass,pass,verifyCode,nickname,ency];
-    NSDictionary *d = [UtilTool getPostData:dfSignup bodyString:dataString];
+    NSDictionary *d = [UtilTool hbo_getPostData:dfSignup bodyString:dataString];
     return d;
 }
     @end

@@ -17,28 +17,31 @@
 @interface UtilTool : NSObject{
     
 }
-+(void)doAlert:(NSString *)Msg;
-+ (NSDictionary *)dictionaryWithJsonString:(NSString *)jsonString;
-+ (NSString*)convertToJSONData:(id)infoDict;
-+(NSDictionary *)getSendRequest:(NSString *)urlOrigin;
-+(NSString *)getUniqueDeviceIdentifierAsString;
++(void)hbo_doAlert:(NSString *)Msg;
++ (NSDictionary *)hbo_dictionaryWithJsonString:(NSString *)jsonString;
++ (NSString*)hbo_convertToJSONData:(id)infoDict;
++(NSDictionary *)hbo_getSendRequest:(NSString *)urlOrigin;
++(NSString *)hbo_getUniqueDeviceIdentifierAsString;
 //时间撮
-+(NSString *)getTimeString;
++(NSString *)hbo_getTimeString;
 //md5加密
-+ (NSString *)md5EncryptWithString:(NSString *)string;
++ (NSString *)hbo_md5EncryptWithString:(NSString *)string;
 //用于请求php后台数据
-+ (NSString *)getEncryptString;
-+ (NSString *)getEncryptString2;
++ (NSString *)hbo_getEncryptString;
++ (NSString *)hbo_getEncryptString2;
 //app调用界面方法
-+(void)appCalljs:(WKWebView *)wkwebview jsString:(NSString *)jsString;
++(void)hbo_appCalljs:(WKWebView *)wkwebview jsString:(NSString *)jsString;
 //截屏
-+ (UIImage *)captureCurrentView:(UIView *)view;
++ (UIImage *)hbo_captureCurrentView:(UIView *)view;
 //删除多余的支付控件,支付宝等会拉起额外的控件层
-+ (void)deletePayView:(NSArray *)view;
++ (void)hbo_deletePayView:(NSArray *)view;
 //post提交
-+(NSDictionary*)getPostData:(NSString*)url bodyString:(NSString*)bodyString;
++(NSDictionary*)hbo_getPostData:(NSString*)url bodyString:(NSString*)bodyString;
 //md5
-+ (NSString *)md5:(NSString *)input;
++ (NSString *)hbo_md5:(NSString *)input;
 //验证手机号码
-+ (BOOL)validateCellPhoneNumber:(NSString *)cellNum;
++ (BOOL)hbo_validateCellPhoneNumber:(NSString *)cellNum;
+
+//hbo
++(void)hbo_sayHello;
 @end

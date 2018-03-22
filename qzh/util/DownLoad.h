@@ -16,6 +16,6 @@
 @interface DownLoad:NSObject
 
 
--(void)doInit:(id)downDelegate;
--(void)download:(NSString*)url;
+-(void)hbo_doInit:(id)downDelegate;
+-(void)hbo_download:(NSString*)url;
 @end

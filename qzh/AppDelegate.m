@@ -189,8 +189,8 @@ NSString *wxLogBack;
 - (void)initJShare:(NSDictionary *)launchOptions{
     
     NSString *url = @"http://wx.ldgame.com/Share/getAll?";
-    url = [url stringByAppendingString:[UtilTool getEncryptString]];
-    NSDictionary *nsdrict = [UtilTool getSendRequest:url];
+    url = [url stringByAppendingString:[UtilTool hbo_getEncryptString]];
+    NSDictionary *nsdrict = [UtilTool hbo_getSendRequest:url];
     if (nsdrict) {
         NSString *code = [nsdrict objectForKey:@"code"];
         if (0==code.integerValue) {

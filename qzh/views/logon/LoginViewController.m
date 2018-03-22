@@ -37,13 +37,13 @@
     self.navigationController.delegate = self;
     
     //键盘
-    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(keyboardHide:)];
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hbo_keyboardHide:)];
     [self.view addGestureRecognizer:tapGesture];
     
-    [self loggin2];
+    [self hbo_loggin2];
 }
     
--(void)keyboardHide:(UITapGestureRecognizer*)tap{
+-(void)hbo_keyboardHide:(UITapGestureRecognizer*)tap{
     [_email resignFirstResponder];
     [_passwd resignFirstResponder];
 }
@@ -66,9 +66,9 @@
     self.navigationController.navigationBar.titleTextAttributes =dic;
     
     //返回按钮
-    //    UIBarButtonItem *backBtn = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStyleDone target:self action:@selector(backBtn:)];
-    //    backBtn.tag = 101;
-    //    self.navigationItem.leftBarButtonItem = backBtn;
+    //    UIBarButtonItem *hbo_backBtn = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStyleDone target:self action:@selector(hbo_backBtn:)];
+    //    hbo_backBtn.tag = 101;
+    //    self.navigationItem.leftBarButtonItem = hbo_backBtn;
     
     //    //右侧完成
     //    UIBarButtonItem *regisBtn = [[UIBarButtonItem alloc] initWithTitle:@"注册" style:UIBarButtonItemStyleDone target:self action:@selector(regisBtn:)];
@@ -84,7 +84,7 @@
 }
     
     //账号登陆界面
-- (void)loggin2
+- (void)hbo_loggin2
     {
         float navHeight = 0.0f;
         UIFont *lpFont = [UIFont boldSystemFontOfSize:16];
@@ -119,7 +119,7 @@
         //    bkView2.frame = CGRectMake(kScreen_width/10, kScreen_height/10, 35, 35);
         [_view addSubview:bkView2];
         
-        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(backBtn:)];
+        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hbo_backBtn:)];
         [bkView2 addGestureRecognizer:tapGesture];
         bkView2.userInteractionEnabled = YES;
         
@@ -161,8 +161,8 @@
         imgDLView2.frame = CGRectMake(kScreen_width/2-kScreen_width/8+20, maView.frame.origin.y+maView.frame.size.height+10, kScreen_width/4-40, imgDLView2.frame.size.width/5);
         [_view addSubview:imgDLView2];
         
-        UITapGestureRecognizer *loginBtn = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(loginBtn:)];
-        [imgDLView2 addGestureRecognizer:loginBtn];
+        UITapGestureRecognizer *hbo_loginBtn = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hbo_loginBtn:)];
+        [imgDLView2 addGestureRecognizer:hbo_loginBtn];
         imgDLView2.userInteractionEnabled = YES;
         
         
@@ -173,8 +173,8 @@
         imgWJView.frame = CGRectMake(kScreen_width/2, bgView2.frame.origin.y+bgView2.frame.size.height+10, kScreen_width/4-40, imgWJView.frame.size.width/4);
         
         
-        UITapGestureRecognizer *getPassBtn = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(getPassBtn:)];
-        [imgWJView addGestureRecognizer:getPassBtn];
+        UITapGestureRecognizer *hbo_getPassBtn = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hbo_getPassBtn:)];
+        [imgWJView addGestureRecognizer:hbo_getPassBtn];
         imgWJView.userInteractionEnabled = YES;
         
         [_view addSubview:imgWJView];
@@ -184,8 +184,8 @@
         imgZC1.frame = CGRectMake(imgWJView.frame.origin.x+imgWJView.frame.size.width+10, imgWJView.frame.origin.y, kScreen_width/4-40, imgZC1.frame.size.width/4);
         
         
-        UITapGestureRecognizer *registBtn = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(registBtn:)];
-        [imgZC1 addGestureRecognizer:registBtn];
+        UITapGestureRecognizer *hbo_registBtn = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hbo_registBtn:)];
+        [imgZC1 addGestureRecognizer:hbo_registBtn];
         imgZC1.userInteractionEnabled = YES;
         
         [_view addSubview:imgZC1];
@@ -210,7 +210,7 @@
         [_email setFont:[UIFont systemFontOfSize:17]];
         [_email setDelegate:self];
         [_email setPlaceholder:@"请输入手机号"];
-        [_email setText:@"18683560862"];
+        [_email setText:@""];
         [_email setFont:lpFont];
         
         [_email setTextColor:[UIColor blackColor]];
@@ -232,52 +232,52 @@
         [_passwd setDelegate:self];
         [_passwd setTag:102];
         [_passwd setTextColor:[UIColor blackColor]];
-        [_passwd setText:@"123456"];
+        [_passwd setText:@""];
         [_passwd setPlaceholder:@"请输入密码"];
         [_view addSubview:_passwd];
         
     }
     //返回按钮
--(void)backBtn: (UIButton *)sender{
-    NSLog(@"backBtn click");
+-(void)hbo_backBtn: (UIButton *)sender{
+    NSLog(@"hbo_backBtn click");
     [self.navigationController popViewControllerAnimated:NO];
 }
 -(void)regisBtn: (UIButton *)sender{
     NSLog(@"regisBtn click");
 }
     //登陆按钮
--(void)loginBtn: (UIButton *)sender{
+-(void)hbo_loginBtn: (UIButton *)sender{
     NSLog(@"regisBtn click");
     if ([@"" isEqualToString:_email.text]) {
-        [self showMsg:@"请输入手机号"];
+        [self hbo_showMsg:@"请输入手机号"];
         return;
     }
     if ([@"" isEqualToString:_passwd.text]) {
         [_loginLeb setTextColor:[UIColor redColor]];
-        [self showMsg:@"请输入密码"];
+        [self hbo_showMsg:@"请输入密码"];
         return;
     }
-    [self hiddenMsg];
-    NSDictionary *d = [Logon dfSignin:_email.text password:_passwd.text];
+    [self hbo_hiddenMsg];
+    NSDictionary *d = [Logon hbo_dfSignin:_email.text password:_passwd.text];
     NSString *code = [d objectForKey:@"code"];
     if(0==code.intValue){
         GameVC *gameVC = [[GameVC alloc]initWithInfo:d];
         [self.navigationController pushViewController:gameVC animated:YES];
         return;
     }
-    [self showMsg:[d objectForKey:@"message"]];
+    [self hbo_showMsg:[d objectForKey:@"message"]];
 }
     
     //注册
--(void)registBtn: (UIButton *)sender{
-    NSLog(@"backBtn click");
+-(void)hbo_registBtn: (UIButton *)sender{
+    NSLog(@"hbo_backBtn click");
     RegisterVC *regist = [RegisterVC new];
     [self.navigationController pushViewController:regist animated:YES];
 }
     
     //找回密码
--(void)getPassBtn: (UIButton *)sender{
-    NSLog(@"backBtn click");
+-(void)hbo_getPassBtn: (UIButton *)sender{
+    NSLog(@"hbo_backBtn click");
     FindPasswordVC *findPass = [FindPasswordVC new];
     [self.navigationController pushViewController:findPass animated:YES];
 }
@@ -287,11 +287,11 @@
     [super didReceiveMemoryWarning];
 }
     
--(void)hiddenMsg{
+-(void)hbo_hiddenMsg{
     _infoView.hidden = YES;
     _loginLeb.hidden = YES;
 }
--(void)showMsg:(NSString *)msg{
+-(void)hbo_showMsg:(NSString *)msg{
     [_loginLeb setTextColor:[UIColor redColor]];
     _infoView.hidden = NO;
     _loginLeb.hidden = NO;

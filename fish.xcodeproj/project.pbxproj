@@ -11,6 +11,8 @@
 		3331E11D201ACC1000C96278 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3331E11C201ACC1000C96278 /* Security.framework */; };
 		3331E124201ACC9D00C96278 /* SAMKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 3331E120201ACC9D00C96278 /* SAMKeychainQuery.m */; };
 		3331E125201ACC9D00C96278 /* SAMKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 3331E121201ACC9D00C96278 /* SAMKeychain.m */; };
+		3338308020609FD8003E5142 /* confuse.sh in Resources */ = {isa = PBXBuildFile; fileRef = 3338307D20609FD8003E5142 /* confuse.sh */; };
+		3338308120609FD8003E5142 /* func.list in Resources */ = {isa = PBXBuildFile; fileRef = 3338307E20609FD8003E5142 /* func.list */; };
 		333C84F3204928800027EC45 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 333C84F2204928800027EC45 /* QuartzCore.framework */; };
 		333C84F5204928920027EC45 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 333C84F4204928920027EC45 /* CoreText.framework */; };
 		333C84F7204928C60027EC45 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 333C84F6204928C60027EC45 /* CoreMotion.framework */; };
@@ -146,6 +148,10 @@
 		3331E121201ACC9D00C96278 /* SAMKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAMKeychain.m; sourceTree = "<group>"; };
 		3331E122201ACC9D00C96278 /* SAMKeychainQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAMKeychainQuery.h; sourceTree = "<group>"; };
 		3331E123201ACC9D00C96278 /* SAMKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAMKeychain.h; sourceTree = "<group>"; };
+		3338307C20609FD8003E5142 /* codeObfuscation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = codeObfuscation.h; sourceTree = "<group>"; };
+		3338307D20609FD8003E5142 /* confuse.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = confuse.sh; sourceTree = "<group>"; };
+		3338307E20609FD8003E5142 /* func.list */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = func.list; sourceTree = "<group>"; };
+		3338307F20609FD8003E5142 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		333C84F2204928800027EC45 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		333C84F4204928920027EC45 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		333C84F6204928C60027EC45 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
@@ -368,13 +374,6 @@
 			path = pay;
 			sourceTree = "<group>";
 		};
-		331564972047D2F7004DFF4E /* qq */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = qq;
-			sourceTree = "<group>";
-		};
 		3325958E20298A46006E0158 /* util */ = {
 			isa = PBXGroup;
 			children = (
@@ -388,6 +387,17 @@
 				33FDC9CF205D06120036890B /* Util.m */,
 			);
 			path = util;
+			sourceTree = "<group>";
+		};
+		3338307B20609FD8003E5142 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				3338307C20609FD8003E5142 /* codeObfuscation.h */,
+				3338307D20609FD8003E5142 /* confuse.sh */,
+				3338307E20609FD8003E5142 /* func.list */,
+				3338307F20609FD8003E5142 /* PrefixHeader.pch */,
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 		3349B88620119113000EC218 = {
@@ -415,10 +425,10 @@
 		3349B89120119113000EC218 /* qzh */ = {
 			isa = PBXGroup;
 			children = (
+				3338307B20609FD8003E5142 /* Resource */,
 				33FFE83C205F5BE400BDA08C /* delegates */,
 				33FDC9DD205D067C0036890B /* imgs */,
 				33DF91D020560F170042D8C7 /* views */,
-				331564972047D2F7004DFF4E /* qq */,
 				331564932047CFE7004DFF4E /* pay */,
 				335DE5DF202AAE9F00A105F1 /* share */,
 				3325958E20298A46006E0158 /* util */,
@@ -555,16 +565,16 @@
 		33FDC9BE205D05CE0036890B /* logon */ = {
 			isa = PBXGroup;
 			children = (
-				33FDC9BF205D05CE0036890B /* LoginViewControllerF.h */,
-				33FDC9C0205D05CE0036890B /* FindPasswordVC.m */,
 				33FDC9C1205D05CE0036890B /* Logon.h */,
 				33FDC9C4205D05CE0036890B /* Logon.m */,
-				33FDC9C2205D05CE0036890B /* RegisterVC.m */,
+				33FDC9BF205D05CE0036890B /* LoginViewControllerF.h */,
 				33FDC9C3205D05CE0036890B /* LoginViewController.m */,
 				33FDC9C5205D05CE0036890B /* FindPasswordVC.h */,
-				33FDC9C6205D05CE0036890B /* LoginViewControllerF.m */,
+				33FDC9C0205D05CE0036890B /* FindPasswordVC.m */,
 				33FDC9C7205D05CE0036890B /* LoginViewController.h */,
+				33FDC9C6205D05CE0036890B /* LoginViewControllerF.m */,
 				33FDC9C8205D05CE0036890B /* RegisterVC.h */,
+				33FDC9C2205D05CE0036890B /* RegisterVC.m */,
 			);
 			path = logon;
 			sourceTree = "<group>";
@@ -735,6 +745,7 @@
 				3349B88B20119113000EC218 /* Sources */,
 				3349B88C20119113000EC218 /* Frameworks */,
 				3349B88D20119113000EC218 /* Resources */,
+				333830822060A047003E5142 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -877,8 +888,10 @@
 				33FDCA1D205D067D0036890B /* dagou1.png in Resources */,
 				33FDCA1A205D067D0036890B /* ty_di2.png in Resources */,
 				33E1BE06205FA916004EEED7 /* default1.png in Resources */,
+				3338308020609FD8003E5142 /* confuse.sh in Resources */,
 				33FFE84F205F82A900BDA08C /* SVProgressHUD.bundle in Resources */,
 				33FDCA35205D067D0036890B /* kaishiyouxidi.png in Resources */,
+				3338308120609FD8003E5142 /* func.list in Resources */,
 				33FDCA1F205D067D0036890B /* di3.png in Resources */,
 				33FDCA31205D067D0036890B /* bt_qiehuan.png in Resources */,
 				33FFE83B205F5A7700BDA08C /* Info.plist in Resources */,
@@ -900,6 +913,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		333830822060A047003E5142 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = $PROJECT_DIR/qzh/Resource/confuse.sh;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3349B88B20119113000EC218 /* Sources */ = {
@@ -1118,6 +1147,8 @@
 					"$(PROJECT_DIR)/qzh/qq",
 					"$(PROJECT_DIR)/qzh/parts/zfb",
 				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = $PROJECT_DIR/qzh/Resource/PrefixHeader.pch;
 				INFOPLIST_FILE = qzh/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1157,6 +1188,8 @@
 					"$(PROJECT_DIR)/qzh/qq",
 					"$(PROJECT_DIR)/qzh/parts/zfb",
 				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = $PROJECT_DIR/qzh/Resource/PrefixHeader.pch;
 				INFOPLIST_FILE = qzh/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

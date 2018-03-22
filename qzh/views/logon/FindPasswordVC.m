@@ -50,12 +50,12 @@
     self.navigationController.delegate = self;
     
     //键盘
-    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(keyboardHide:)];
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hbo_keyboardHide:)];
     [self.view addGestureRecognizer:tapGesture];
-    [self loggin2];
+    [self hbo_loggin2];
 }
     
--(void)keyboardHide:(UITapGestureRecognizer*)tap{
+-(void)hbo_keyboardHide:(UITapGestureRecognizer*)tap{
     [_mmField2 resignFirstResponder];
     [_mmField resignFirstResponder];
     [_yzmField resignFirstResponder];
@@ -70,7 +70,7 @@
     [self.navigationController setNavigationBarHidden:isShowHomePage animated:YES];
 }
     //注册界面
-- (void)loggin2
+- (void)hbo_loggin2
     {
         float navHeight = 0.0f;
 //        UIFont *lpFont = [UIFont boldSystemFontOfSize:16];
@@ -99,7 +99,7 @@
         //    //    bkView2.frame = CGRectMake(kScreen_width/10, kScreen_height/10, 35, 35);
         //    [_view addSubview:bkView2];
         
-        //    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(backBtn:)];
+        //    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hbo_backBtn:)];
         //    [bkView2 addGestureRecognizer:tapGesture];
         //    bkView2.userInteractionEnabled = YES;
         
@@ -116,8 +116,8 @@
         [_view addSubview:closeView];
         
         
-        UITapGestureRecognizer *closeBtn = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeBtn:)];
-        [closeView addGestureRecognizer:closeBtn];
+        UITapGestureRecognizer *hbo_closeBtn = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hbo_closeBtn:)];
+        [closeView addGestureRecognizer:hbo_closeBtn];
         closeView.userInteractionEnabled = YES;
         
         //背景3
@@ -170,8 +170,8 @@
         getYzmV.frame = CGRectMake(diView2.frame.origin.x+diView2.frame.size.width+20,
                                    yzmLeb.frame.origin.y, 85,30);
         
-        UITapGestureRecognizer *yamBtn = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(yamBtn:)];
-        [getYzmV addGestureRecognizer:yamBtn];
+        UITapGestureRecognizer *hbo_yamBtn = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hbo_yamBtn:)];
+        [getYzmV addGestureRecognizer:hbo_yamBtn];
         getYzmV.userInteractionEnabled = YES;
         
         [_view addSubview:getYzmV];
@@ -240,7 +240,7 @@
         submitV.frame = CGRectMake(kScreen_width/2-45,
                                    nickNameLeb.frame.origin.y+nickNameLeb.frame.size.height+10, 90,30);
         
-        UITapGestureRecognizer *regisBtn = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(findkeyBtn:)];
+        UITapGestureRecognizer *regisBtn = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hbo_findkeyBtn:)];
         [submitV addGestureRecognizer:regisBtn];
         submitV.userInteractionEnabled = YES;
         
@@ -250,16 +250,16 @@
         
     }
     //返回按钮
--(void)backBtn: (UIButton *)sender{
-    NSLog(@"backBtn click");
+-(void)hbo_backBtn: (UIButton *)sender{
+    NSLog(@"hbo_backBtn click");
     [self.navigationController popViewControllerAnimated:NO];
 }
--(void)closeBtn: (UIButton *)sender{
-    NSLog(@"backBtn click");
+-(void)hbo_closeBtn: (UIButton *)sender{
+    NSLog(@"hbo_backBtn click");
     [self.navigationController popViewControllerAnimated:NO];
 }
     
--(void)findkeyBtn: (UIButton *)sender{
+-(void)hbo_findkeyBtn: (UIButton *)sender{
     NSLog(@"regisBtn click");
     
     NSString *phoneNum = _sjhField.text;
@@ -267,65 +267,65 @@
     NSString *mima = _mmField.text;
     NSString *mima2 = _mmField2.text;
     
-    if(![UtilTool validateCellPhoneNumber:phoneNum]){
-        [UtilTool doAlert:@"手机号不存在"];
+    if(![UtilTool hbo_validateCellPhoneNumber:phoneNum]){
+        [UtilTool hbo_doAlert:@"手机号不存在"];
         return;
     }
     if(yzm.length!=4){
-        [UtilTool doAlert:@"验证码不正确"];
+        [UtilTool hbo_doAlert:@"验证码不正确"];
         return;
     }
     if(mima.length<6||mima.length>20){
-        [UtilTool doAlert:@"密码格式不正确"];
+        [UtilTool hbo_doAlert:@"密码格式不正确"];
         return;
     }
     if(mima2.length<6||mima2.length>20){
-        [UtilTool doAlert:@"确认密码格式不正确"];
+        [UtilTool hbo_doAlert:@"确认密码格式不正确"];
         return;
     }
     if(![mima2 isEqualToString:mima]){
-        [UtilTool doAlert:@"2次密码不一致"];
+        [UtilTool hbo_doAlert:@"2次密码不一致"];
         return;
     }
-    NSDictionary *d = [Logon findkey:phoneNum pass:mima verifyCode:yzm];
+    NSDictionary *d = [Logon hbo_findkey:phoneNum pass:mima verifyCode:yzm];
     NSString *code = [d objectForKey:@"code"];
     if(0==code.intValue){
-        [UtilTool doAlert:@"找回密码成功，准备进入游戏!"];
+        [UtilTool hbo_doAlert:@"找回密码成功，准备进入游戏!"];
         
-        NSDictionary *d2 = [Logon dfSignin:phoneNum password:mima];
+        NSDictionary *d2 = [Logon hbo_dfSignin:phoneNum password:mima];
         NSString *code2 = [d2 objectForKey:@"code"];
         if(0==code2.intValue){
-            GameVC *gameVC = [[GameVC alloc]initWithInfo:d];
+            GameVC *gameVC = [[GameVC alloc]initWithInfo:d2];
             [self.navigationController pushViewController:gameVC animated:YES];
             return;
         }
     }
-    [UtilTool doAlert:[d objectForKey:@"message"]];
+    [UtilTool hbo_doAlert:[d objectForKey:@"message"]];
 }
--(void)yamBtn:(UIButton*)sender{
+-(void)hbo_yamBtn:(UIButton*)sender{
     NSLog(@"get yzm click");
     NSString *phoneNum = _sjhField.text;
-    if(![UtilTool validateCellPhoneNumber:phoneNum]){
-        [UtilTool doAlert:@"手机号不存在"];
+    if(![UtilTool hbo_validateCellPhoneNumber:phoneNum]){
+        [UtilTool hbo_doAlert:@"手机号不存在"];
         return;
     }
-    NSDictionary *d = [Logon sendvVrifyMsg:phoneNum type:@""];
+    NSDictionary *d = [Logon hbo_sendvVrifyMsg:phoneNum type:@""];
     NSString *code = [d objectForKey:@"code"];
     if(0!=code.intValue){
-        [UtilTool doAlert:[d objectForKey:@"message"]];
+        [UtilTool hbo_doAlert:[d objectForKey:@"message"]];
         return;
     }
-    [UtilTool doAlert:@"验证码已发送"];
+    [UtilTool hbo_doAlert:@"验证码已发送"];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
     
--(void)hiddenMsg{
+-(void)hbo_hiddenMsg{
     _infoView.hidden = YES;
     _loginLeb.hidden = YES;
 }
--(void)showMsg:(NSString *)msg{
+-(void)hbo_showMsg:(NSString *)msg{
     [_loginLeb setTextColor:[UIColor redColor]];
     _infoView.hidden = NO;
     _loginLeb.hidden = NO;

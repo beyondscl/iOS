@@ -21,21 +21,21 @@
 @implementation DownLoad
 
 
--(void)doInit:(id)downDelegate{
+-(void)hbo_doInit:(id)downDelegate{
     self.downProgressDele =downDelegate;
     if (!_session) {
         _session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration  defaultSessionConfiguration] delegate:self delegateQueue:[NSOperationQueue mainQueue]];
     }
 }
--(Boolean)checkSession{
+-(Boolean)hbo_checkSession{
     if (_session==nil) {
         NSLog(@"session didnot init");
         return false;
     }
     return true;
 }
--(void)download:(NSString*)urlStr{
-    [self checkSession];
+-(void)hbo_download:(NSString*)urlStr{
+    [self hbo_checkSession];
     NSURL *url = [NSURL URLWithString:urlStr];
     NSURLSessionDownloadTask *downTask = [_session downloadTaskWithURL:url];
     [downTask resume];
@@ -53,15 +53,15 @@
     //    NSString *tmpDir =  NSTemporaryDirectory();
     //  documentPath    NSPathStore2 *    @"/var/mobile/Containers/Data/Application/0A4634BE-E03D-411B-976F-E3378DD7C122/Documents"    0x000000017017bb40
     
-    NSString *rootPaht = [FileUtil getRootPath];
+    NSString *rootPaht = [FileUtil hbo_getRootPath];
     NSString *filePath = @"";
     NSString *fileName = downloadTask.response.suggestedFilename;
     
     NSString *fullPath = [rootPaht stringByAppendingFormat:@"%@%@",filePath,fileName];
-    [FileUtil moveFileFromDown:location toFullPath:fullPath];
+    [FileUtil hbo_moveFileFromDown:location toFullPath:fullPath];
     if (fileName && [fileName containsString:@".zip"]) {
         NSString *fileNameT = [[fileName componentsSeparatedByString:@"."] firstObject];
-        [FileUtil unZip:fullPath unzipPath:[rootPaht stringByAppendingString:fileNameT]];
+        [FileUtil hbo_unZip:fullPath unzipPath:[rootPaht stringByAppendingString:fileNameT]];
     }
 }
 //恢复下载代理

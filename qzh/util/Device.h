@@ -18,14 +18,14 @@
 @interface DeviceInfo : NSObject{
     
 }
--(CGFloat)getBatteryQuantity;
--(nullable NSString*)getWifiName;
--(UIDeviceBatteryState)getBatteryStauts;
--(int)getSignalStrength;
-- (nullable NSString *)getCurreWiFiSsid;
-- (nullable NSString*)getCurrentLocalIP;
-- (nullable NSString*)iphoneType;
--(void)startLocation;
-+(void)askAudio;
-+(void)askScreenLight;
+-(CGFloat)hbo_getBatteryQuantity;
+-(nullable NSString*)hbo_getWifiName;
+-(UIDeviceBatteryState)hbo_getBatteryStauts;
+-(int)hbo_getSignalStrength;
+- (nullable NSString *)hbo_getCurreWiFiSsid;
+- (nullable NSString*)hbo_getCurrentLocalIP;
+- (nullable NSString*)hbo_iphoneType;
+-(void)hbo_startLocation;
++(void)hbo_askAudio;
++(void)hbo_askScreenLight;
 @end

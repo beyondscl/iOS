@@ -44,7 +44,7 @@ SKPaymentTransactionObserver>{
     
     userInfo = info; //初始化用户数据
     download = [DownLoad new];//初始化下载和代理
-    [download doInit:self];
+    [download hbo_doInit:self];
     
     return self;
 }
@@ -58,16 +58,16 @@ SKPaymentTransactionObserver>{
     //测试下载和协议
     //[download download:@"http://www.71bird.com/qzh/web.zip"];//web.zip
     
-    UIImage *load = [UIImage imageNamed:@"imgs/login/loading1.jpg"];
+    UIImage *load = [UIImage imageNamed:@"loading1.jpg"];
     UIImageView *loading = [[UIImageView alloc]initWithImage:load];
     loading.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-    [self.view addSubview:loading];
+//    [self.view addSubview:loading];
     [SVProgressHUD showWithStatus:@"努力加载中..."];
-    
-    [self loadGame];
+    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+    [self hbo_loadGame];
 }
 
--(void)loadGame{
+-(void)hbo_loadGame{
     
     @try{
         NSString *code = [userInfo objectForKey:@"code"];
@@ -127,10 +127,14 @@ SKPaymentTransactionObserver>{
                             NSString *uid = [_UserInfo objectForKey:@"uid"];
                             NSString *token = [_UserInfo objectForKey:@"token"];
                             NSString *host = [_UserInfo objectForKey:@"ip"];
-                            NSString *port = @"7002";
-                            host = @"203.19.33.6";
+                            NSString *port = [_UserInfo objectForKey:@"port"];
+                            
+                            NSString *server = [_UserInfo objectForKey:@"server"];
+                            host  = [server componentsSeparatedByString:@":"][0];
+                            port  = [server componentsSeparatedByString:@":"][1];
+
                             NSDictionary * dic = @{@"cmd":@"1",@"uid":uid,@"token":token,@"host":host,@"port":port };
-                            NSString *jsstring =[UtilTool convertToJSONData:dic];
+                            NSString *jsstring =[UtilTool hbo_convertToJSONData:dic];
                             jsstring = [jsstring stringByReplacingOccurrencesOfString:@"\n" withString:@""];
                             NSString *textJS = [NSString stringWithFormat:@"%@%@%@", @"appCalljs('" ,jsstring,@"')"];
                             JSContext *context = [webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
@@ -153,7 +157,7 @@ SKPaymentTransactionObserver>{
                     }else{
                         return NO;
                     }
-                    NSSet *nsset = [pay appleGetProduct:gooid];
+                    NSSet *nsset = [pay hbo_appleGetProduct:gooid];
                     SKProductsRequest *request=[[SKProductsRequest alloc] initWithProductIdentifiers: nsset];
                     request.delegate=self;//单独提出去
                     [request start];
@@ -182,7 +186,7 @@ SKPaymentTransactionObserver>{
 - (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response{
     NSArray *myProduct = response.products;
     if (myProduct.count == 0) {
-        [UtilTool doAlert:@"无法获取产品信息，购买失败"];
+        [UtilTool hbo_doAlert:@"无法获取产品信息，购买失败"];
         [self dissmiss];
         return;
     }
@@ -192,7 +196,7 @@ SKPaymentTransactionObserver>{
 
 //弹出错误信息
 - (void)request:(SKRequest *)request didFailWithError:(NSError *)error{
-    [UtilTool doAlert:[error localizedDescription]];
+    [UtilTool hbo_doAlert:[error localizedDescription]];
     [self dissmiss];
 }
 
@@ -234,7 +238,7 @@ SKPaymentTransactionObserver>{
     //    NSString * receipt = [transaction.transactionReceipt base64EncodedString];
     if ([productIdentifier length] > 0) {
         // 向自己的服务器验证购买凭证,可以开线程
-        [pay verifyPurchaseWithPaymentTransaction];
+        [pay hbo_verifyPurchaseWithPaymentTransaction];
     }
     // Remove the transaction from the payment queue.
     [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
@@ -247,9 +251,9 @@ SKPaymentTransactionObserver>{
     if(transaction.error.code != SKErrorPaymentCancelled) {
         NSDictionary<NSErrorUserInfoKey,id> * _Nonnull extractedExpr = transaction.error.userInfo;
         NSDictionary *userInfo = extractedExpr;
-        [UtilTool doAlert:[userInfo objectForKey:@"NSLocalizedDescription"]];
+        [UtilTool hbo_doAlert:[userInfo objectForKey:@"NSLocalizedDescription"]];
     } else {
-        [UtilTool doAlert:@"取消交易!"];
+        [UtilTool hbo_doAlert:@"取消交易!"];
     }
     [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
     

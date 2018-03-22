@@ -14,9 +14,9 @@
 #import <Foundation/Foundation.h>
 @interface Logon  : NSObject
 
-+(NSDictionary *)dfSignin:(NSString *)account password:(NSString *)password;
-+(NSDictionary *)touSignin;
-+(NSDictionary*)dfSignup:(NSString *)account  pass:(NSString*)pass verifyCode:(NSString*)verifyCode nickname:(NSString*)nickname;
-+(NSDictionary*)findkey:(NSString *)account  pass:(NSString*)pass verifyCode:(NSString*)verifyCode;
-+(NSDictionary*)sendvVrifyMsg:(NSString *)account type:(NSString*)type;
++(NSDictionary *)hbo_dfSignin:(NSString *)account password:(NSString *)password;
++(NSDictionary *)hbo_touSignin;
++(NSDictionary*)hbo_dfSignup:(NSString *)account  pass:(NSString*)pass verifyCode:(NSString*)verifyCode nickname:(NSString*)nickname;
++(NSDictionary*)hbo_findkey:(NSString *)account  pass:(NSString*)pass verifyCode:(NSString*)verifyCode;
++(NSDictionary*)hbo_sendvVrifyMsg:(NSString *)account type:(NSString*)type;
     @end
