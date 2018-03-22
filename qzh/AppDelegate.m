@@ -21,22 +21,33 @@
 #import "AppDelegate.h"
 #import "Util.h"
 #import "LoginViewControllerF.h"
-
+#import "SVProgressHUD.h"
 
 
 NSString *wxLogBack;
 
+
 @interface AppDelegate ()<JPUSHRegisterDelegate>{
-    
 }
 
 @end
+
 
 @implementation AppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-
+    
+    // 监测网络情况
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(hbo_reachabilityChanged:)
+                                                 name: kReachabilityChangedNotification
+                                               object: nil];
+    Reachability *reach = [Reachability reachabilityWithHostName:@"www.baidu.com"];
+    [reach startNotifier];
+    self.reach = reach;
+    
+    
     [NSThread sleepForTimeInterval:1];
     
     LoginViewControllerF *rootVC = [[LoginViewControllerF alloc]init ];
@@ -263,6 +274,29 @@ NSString *wxLogBack;
 
 -(BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{
     return YES;
+}
+
+
+#pragma mark - 网络状态变化通知
+- (void)hbo_reachabilityChanged:(NSNotification*)note {
+    
+    Reachability* curReach = [note object];
+    NSParameterAssert([curReach isKindOfClass: [Reachability class]]);
+    NetworkStatus status = [curReach currentReachabilityStatus];
+    /*
+     NotReachable = 0, 无网络连接
+     ReachableViaWiFi, Wifi
+     ReachableViaWWAN 2G/3G/4G/5G
+     */
+    if (status == NotReachable) {
+//        [SVProgressHUD showWithStatus:@"正在尝试链接网络..."];
+//        return;
+    } else if (status == ReachableViaWiFi) {
+        NSLog(@"Wifi");
+    } else {
+        NSLog(@"3G/4G/5G");
+    }
+//    [SVProgressHUD dismiss];
 }
 
 @end
