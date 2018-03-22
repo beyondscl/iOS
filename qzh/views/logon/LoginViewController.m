@@ -35,7 +35,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationController.delegate = self;
-    
+    self.navigationController.navigationBarHidden = YES;
+
     //键盘
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hbo_keyboardHide:)];
     [self.view addGestureRecognizer:tapGesture];
@@ -55,32 +56,15 @@
     [self.view endEditing:YES];
     
 }
-    
-#pragma mark addNavBar
-    
--(void)addNavgation{
-    
-    self.navigationItem.title = @"登陆";
-    UIFont *font = [UIFont fontWithName:@"Arial-ItalicMT" size:21];
-    NSDictionary *dic = @{NSFontAttributeName:font};//,NSForegroundColorAttributeName: [UIColor blueColor]
-    self.navigationController.navigationBar.titleTextAttributes =dic;
-    
-    //返回按钮
-    //    UIBarButtonItem *hbo_backBtn = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStyleDone target:self action:@selector(hbo_backBtn:)];
-    //    hbo_backBtn.tag = 101;
-    //    self.navigationItem.leftBarButtonItem = hbo_backBtn;
-    
-    //    //右侧完成
-    //    UIBarButtonItem *regisBtn = [[UIBarButtonItem alloc] initWithTitle:@"注册" style:UIBarButtonItemStyleDone target:self action:@selector(regisBtn:)];
-    //    regisBtn.tag = 102;
-    //    self.navigationItem.rightBarButtonItem = regisBtn;
-}
+
 #pragma mark 去掉导航栏
-    
 - (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
-    // 判断要显示的控制器是否是自己
-    BOOL isShowHomePage = [viewController isKindOfClass:[self class]];
-    [self.navigationController setNavigationBarHidden:isShowHomePage animated:YES];
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:animated];
+}
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:animated];
 }
     
     //账号登陆界面
@@ -240,7 +224,7 @@
     //返回按钮
 -(void)hbo_backBtn: (UIButton *)sender{
     NSLog(@"hbo_backBtn click");
-    [self.navigationController popViewControllerAnimated:NO];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 -(void)regisBtn: (UIButton *)sender{
     NSLog(@"regisBtn click");

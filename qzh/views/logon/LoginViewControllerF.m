@@ -35,14 +35,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationController.delegate = self;
+    self.navigationController.navigationBarHidden = YES;
+
     [self hbo_loggin];
 }
 
 #pragma mark 去掉导航栏
 - (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
-    // 判断要显示的控制器是否是自己
-//    BOOL isShowHomePage = [viewController isKindOfClass:[self class]];
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:animated];
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];

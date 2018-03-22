@@ -63,11 +63,13 @@
     
 }
 #pragma mark 去掉导航栏
-    
 - (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
-    // 判断要显示的控制器是否是自己
-    BOOL isShowHomePage = [viewController isKindOfClass:[self class]];
-    [self.navigationController setNavigationBarHidden:isShowHomePage animated:YES];
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:animated];
+}
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:animated];
 }
     //注册界面
 - (void)hbo_loggin2
@@ -89,7 +91,7 @@
         //背景2
         UIImage *bg2 =[UIImage imageNamed:@"ty_di1.png"];
         UIImageView *bgView2 = [[UIImageView alloc]initWithImage:bg2];
-        bgView2.frame = CGRectMake(kScreen_width/6, kScreen_height/7, kScreen_width*4/6, kScreen_height*5/7);
+        bgView2.frame = CGRectMake(kScreen_width/6, kScreen_height/9, kScreen_width*4/6, kScreen_height*7/8);
         [_view addSubview:bgView2];
         
         //    //返回
@@ -123,7 +125,7 @@
         //背景3
         UIImage *back3 =[UIImage imageNamed:@"ty_di4.png"];
         UIImageView *back3View3 = [[UIImageView alloc]initWithImage:back3];
-        back3View3.frame = CGRectMake(kScreen_width/6+4, kScreen_height/7+35, kScreen_width*4/6-8, kScreen_height*5/7-38);
+        back3View3.frame = CGRectMake(bgView2.frame.origin.x+4, bgView2.frame.origin.y+40, bgView2.frame.size.width-8, bgView2.frame.size.height-42);
         [_view addSubview:back3View3];
         
         
@@ -238,7 +240,7 @@
         UIImage *submit =[UIImage imageNamed:@"queding.png"];
         UIImageView *submitV = [[UIImageView alloc]initWithImage:submit];
         submitV.frame = CGRectMake(kScreen_width/2-45,
-                                   nickNameLeb.frame.origin.y+nickNameLeb.frame.size.height+10, 90,30);
+                                   _mmField2.frame.origin.y+_mmField2.frame.size.height+10, 90,30);
         
         UITapGestureRecognizer *regisBtn = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hbo_findkeyBtn:)];
         [submitV addGestureRecognizer:regisBtn];
@@ -252,11 +254,11 @@
     //返回按钮
 -(void)hbo_backBtn: (UIButton *)sender{
     NSLog(@"hbo_backBtn click");
-    [self.navigationController popViewControllerAnimated:NO];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 -(void)hbo_closeBtn: (UIButton *)sender{
     NSLog(@"hbo_backBtn click");
-    [self.navigationController popViewControllerAnimated:NO];
+    [self.navigationController popViewControllerAnimated:YES];
 }
     
 -(void)hbo_findkeyBtn: (UIButton *)sender{
