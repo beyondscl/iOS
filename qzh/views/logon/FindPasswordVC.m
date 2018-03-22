@@ -91,7 +91,7 @@
         //背景2
         UIImage *bg2 =[UIImage imageNamed:@"ty_di1.png"];
         UIImageView *bgView2 = [[UIImageView alloc]initWithImage:bg2];
-        bgView2.frame = CGRectMake(kScreen_width/6, kScreen_height/9, kScreen_width*4/6, kScreen_height*7/8);
+        bgView2.frame = CGRectMake(kScreen_width/6, kScreen_height/10, kScreen_width*4/6, kScreen_height*7/8);
         [_view addSubview:bgView2];
         
         //    //返回

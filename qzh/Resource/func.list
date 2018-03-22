@@ -6,6 +6,7 @@ hbo_askScreenLight
 hbo_backBtn
 hbo_captureCurrentView
 hbo_checkSession
+hbo_clearCache
 hbo_closeBtn
 hbo_convertToJSONData
 hbo_copyFileFromPath
@@ -15,6 +16,7 @@ hbo_deletePayView
 hbo_dfSignin
 hbo_dfSignup
 hbo_dictionaryWithJsonString
+hbo_dissmiss
 hbo_doAlert
 hbo_doInit
 hbo_download

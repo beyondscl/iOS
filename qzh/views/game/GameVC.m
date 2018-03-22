@@ -12,11 +12,14 @@
 #import "pay.h"
 #import "Commutate.h"
 #import "DownLoad.h"
+#import "Device.h"
 #import <JavaScriptCore/JavaScriptCore.h>
 #import "SVProgressHUD.h"
 
 #import <StoreKit/StoreKit.h>
 
+#define kScreen_height [UIScreen mainScreen].bounds.size.height
+#define kScreen_width [UIScreen mainScreen].bounds.size.width
 
 @interface GameVC()<UINavigationControllerDelegate,
 UserInfoDelegate,
@@ -57,12 +60,11 @@ SKPaymentTransactionObserver>{
     isShowWait = 0;
     //测试下载和协议
     //[download download:@"http://www.71bird.com/qzh/web.zip"];//web.zip
-    [self clearCache];
+    [self hbo_clearCache];
     [self hbo_loadGame];
 }
 
 -(void)hbo_loadGame{
-    
     @try{
         NSString *code = [userInfo objectForKey:@"code"];
         if(0==code.intValue){
@@ -71,6 +73,7 @@ SKPaymentTransactionObserver>{
             NSURL *url = [NSURL fileURLWithPath:_pathStr];
             UIWebView *webview = [[UIWebView alloc]initWithFrame:self.view.frame];
             webview.backgroundColor = [UIColor blackColor];
+            webview.scrollView.scrollEnabled = NO;
             webview.delegate = self;
             [webview loadRequest:[NSURLRequest requestWithURL:url]];
             [self.view addSubview:webview];
@@ -176,9 +179,22 @@ SKPaymentTransactionObserver>{
     [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
+    
+    if ([@"iPhone X" isEqualToString:[DeviceInfo hbo_iphoneType]]) {
+        NSLog(@"webView.scrollView%@",webView.scrollView);
+        //webView.scrollView.contentOffset = CGPointMake(0, 0);//左上角定点坐标
+        webView.scrollView.contentSize = CGSizeMake(kScreen_width,kScreen_height);//宽高
+        webView.scrollView.autoresizesSubviews = YES;
+        [webView.scrollView setContentInset:UIEdgeInsetsMake(0, -44, -21 , -44) ];//上 左 下 右纪录
+        NSLog(@"webView.scrollView%@",webView.scrollView);
+        
+    }
+    
     //方式一，使用native方式，拦截URL方式
     //[uiWebView stringByEvaluatingJavaScriptFromString:@"appCalljs('123123');"];
     //方式二 jsbreage
+    
+    //去掉进度栏
     [SVProgressHUD dismiss];
     [wvLoading removeFromSuperview];
 }
@@ -193,7 +209,7 @@ SKPaymentTransactionObserver>{
     NSArray *myProduct = response.products;
     if (myProduct.count == 0) {
         [UtilTool hbo_doAlert:@"无法获取产品信息，购买失败"];
-        [self dissmiss];
+        [self hbo_dissmiss];
         return;
     }
     SKPayment * payment = [SKPayment paymentWithProduct:myProduct[0]];
@@ -203,7 +219,7 @@ SKPaymentTransactionObserver>{
 //弹出错误信息
 - (void)request:(SKRequest *)request didFailWithError:(NSError *)error{
     [UtilTool hbo_doAlert:[error localizedDescription]];
-    [self dissmiss];
+    [self hbo_dissmiss];
 }
 
 -(void) requestDidFinish:(SKRequest *)request
@@ -238,7 +254,7 @@ SKPaymentTransactionObserver>{
 }
 // 交易完成
 - (void)completeTransaction:(SKPaymentTransaction *)transaction {
-    [self dissmiss];
+    [self hbo_dissmiss];
     
     NSString * productIdentifier = transaction.payment.productIdentifier;
     //    NSString * receipt = [transaction.transactionReceipt base64EncodedString];
@@ -253,7 +269,7 @@ SKPaymentTransactionObserver>{
 
 // 交易失败
 - (void)failedTransaction:(SKPaymentTransaction *)transaction {
-    [self dissmiss];
+    [self hbo_dissmiss];
     if(transaction.error.code != SKErrorPaymentCancelled) {
         NSDictionary<NSErrorUserInfoKey,id> * _Nonnull extractedExpr = transaction.error.userInfo;
         NSDictionary *userInfo = extractedExpr;
@@ -266,20 +282,20 @@ SKPaymentTransactionObserver>{
 }
 // 已购商品
 - (void)restoreTransaction:(SKPaymentTransaction *)transaction {
-    [self dissmiss];
+    [self hbo_dissmiss];
     // 对于已购商品，处理恢复购买的逻辑
     [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
 }
 //苹果支付完成------------------
 
 //苹果支付显示进度条
--(void)dissmiss{
+-(void)hbo_dissmiss{
     isShowWait = 0;
     [SVProgressHUD dismiss];
 }
 
 //清除缓存 和cookies
--(void)clearCache{
+-(void)hbo_clearCache{
     
     NSURLCache * cache = [NSURLCache sharedURLCache];
     [cache removeAllCachedResponses];
@@ -290,6 +306,22 @@ SKPaymentTransactionObserver>{
         [storage deleteCookie:cookie];
     }
 }
+
+//home 按钮
+//游戏中变灰,点击2次才会退出 和自动隐藏不能同时用
+-(UIRectEdge)preferredScreenEdgesDeferringSystemGestures
+{
+    return UIRectEdgeAll;
+}
+//- (nullable UIViewController *)childViewControllerForHomeIndicatorAutoHidden API_AVAILABLE(ios(11.0)) API_UNAVAILABLE(watchos, tvos){
+//    return self;
+//}
+//自动隐藏
+//- (BOOL)prefersHomeIndicatorAutoHidden API_AVAILABLE(ios(11.0)) API_UNAVAILABLE(watchos, tvos){
+//    return YES;
+//}
+//- (void)setNeedsUpdateOfHomeIndicatorAutoHidden API_AVAILABLE(ios(11.0)) API_UNAVAILABLE(watchos, tvos){
+//}
 
 - (void)dealloc
 {

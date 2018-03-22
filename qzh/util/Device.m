@@ -122,7 +122,7 @@
     return [(NSDictionary*)info objectForKey:@"SSID"];
 }
 
-- (NSString*)hbo_iphoneType {
++ (NSString*)hbo_iphoneType {
     struct utsname systemInfo;
     uname(&systemInfo);
     

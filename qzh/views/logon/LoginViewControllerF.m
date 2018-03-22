@@ -120,13 +120,13 @@
 //账号按钮
 -(void)hbo_zhBtn: (UIButton *)sender{
     LoginViewController *loginVc = [LoginViewController new];
-    [self.navigationController pushViewController:loginVc animated:NO];
-    [self.navigationController setNavigationBarHidden:YES animated:NO];
+    [self.navigationController pushViewController:loginVc animated:YES];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 //注册按钮
 -(void)hbo_registBtn: (UIButton *)sender{
     RegisterVC *registVc = [[RegisterVC alloc]init];
-    [self.navigationController pushViewController:registVc animated:NO];
+    [self.navigationController pushViewController:registVc animated:YES];
     NSLog(@"regisBtn click");
 }
 - (void)didReceiveMemoryWarning {

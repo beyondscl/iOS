@@ -24,7 +24,7 @@
 -(int)hbo_getSignalStrength;
 - (nullable NSString *)hbo_getCurreWiFiSsid;
 - (nullable NSString*)hbo_getCurrentLocalIP;
-- (nullable NSString*)hbo_iphoneType;
++ (nullable NSString*)hbo_iphoneType;
 -(void)hbo_startLocation;
 +(void)hbo_askAudio;
 +(void)hbo_askScreenLight;

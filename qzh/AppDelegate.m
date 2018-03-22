@@ -36,9 +36,9 @@ NSString *wxLogBack;
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
-    [NSThread sleepForTimeInterval:1];
 
+    [NSThread sleepForTimeInterval:1];
+    
     LoginViewControllerF *rootVC = [[LoginViewControllerF alloc]init ];
     UINavigationController *navVC = [[UINavigationController alloc]initWithRootViewController:rootVC];
     self.window.rootViewController = navVC;
