@@ -24,11 +24,11 @@ UIWebViewDelegate,
 DownProgress,
 SKProductsRequestDelegate ,
 SKPaymentTransactionObserver>{
-    NSDictionary *userInfo;
+    NSDictionary *userInfo; //接受用户数据
     id<DownProgress> downProgressDele;
-    DownLoad *download;
+    DownLoad *download; //下载文件
     int isShowWait;//判断当前是否已有提示框
-    
+    UIImageView *wvLoading;//webview 加载空白问题
 }
 @end
 
@@ -57,13 +57,7 @@ SKPaymentTransactionObserver>{
     isShowWait = 0;
     //测试下载和协议
     //[download download:@"http://www.71bird.com/qzh/web.zip"];//web.zip
-    
-    UIImage *load = [UIImage imageNamed:@"loading1.jpg"];
-    UIImageView *loading = [[UIImageView alloc]initWithImage:load];
-    loading.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-//    [self.view addSubview:loading];
-    [SVProgressHUD showWithStatus:@"努力加载中..."];
-    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+    [self clearCache];
     [self hbo_loadGame];
 }
 
@@ -89,7 +83,8 @@ SKPaymentTransactionObserver>{
 
 #pragma mark 去掉导航栏
 - (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:animated];
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -132,7 +127,7 @@ SKPaymentTransactionObserver>{
                             NSString *server = [_UserInfo objectForKey:@"server"];
                             host  = [server componentsSeparatedByString:@":"][0];
                             port  = [server componentsSeparatedByString:@":"][1];
-
+                            
                             NSDictionary * dic = @{@"cmd":@"1",@"uid":uid,@"token":token,@"host":host,@"port":port };
                             NSString *jsstring =[UtilTool hbo_convertToJSONData:dic];
                             jsstring = [jsstring stringByReplacingOccurrencesOfString:@"\n" withString:@""];
@@ -145,14 +140,14 @@ SKPaymentTransactionObserver>{
                     }
                     
                 }else if(3==cmd.intValue){//登陆回掉
-                    [self.navigationController popToRootViewControllerAnimated:NO];
+                    [self.navigationController popToRootViewControllerAnimated:YES];
                 }else{
                     if(0==isShowWait){
                         //                        SVProgressHUDStyleLight,
                         //                        SVProgressHUDStyleDark,
                         //                        SVProgressHUDStyleCustom
                         isShowWait = 1;
-                        [SVProgressHUD showWithStatus:@"正在链接App Store"];
+                        [SVProgressHUD showWithStatus:@"正在链接iTunes Store"];
                         [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
                     }else{
                         return NO;
@@ -168,13 +163,24 @@ SKPaymentTransactionObserver>{
     return YES;
 }
 - (void)webViewDidStartLoad:(UIWebView *)webView{
+    //解决加载有一段空白时间
+    UIImage *load = [UIImage imageNamed:@"loading1.jpg"];
+    wvLoading = [[UIImageView alloc]initWithImage:load];
+    wvLoading.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    wvLoading.tag = 301;
+    webView.backgroundColor = [UIColor clearColor];
+    webView.opaque = NO;
+    [webView addSubview:wvLoading];
     
+    [SVProgressHUD showWithStatus:@"正在获取资源..."];
+    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
     //方式一，使用native方式，拦截URL方式
     //[uiWebView stringByEvaluatingJavaScriptFromString:@"appCalljs('123123');"];
     //方式二 jsbreage
     [SVProgressHUD dismiss];
+    [wvLoading removeFromSuperview];
 }
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
     
@@ -266,9 +272,23 @@ SKPaymentTransactionObserver>{
 }
 //苹果支付完成------------------
 
+//苹果支付显示进度条
 -(void)dissmiss{
     isShowWait = 0;
     [SVProgressHUD dismiss];
+}
+
+//清除缓存 和cookies
+-(void)clearCache{
+    
+    NSURLCache * cache = [NSURLCache sharedURLCache];
+    [cache removeAllCachedResponses];
+    [cache setDiskCapacity:0];
+    [cache setMemoryCapacity:0];
+    NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    for (NSHTTPCookie *cookie in [storage cookies]){
+        [storage deleteCookie:cookie];
+    }
 }
 
 - (void)dealloc
